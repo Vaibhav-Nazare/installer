@@ -5,7 +5,7 @@ provider "libvirt" {
 resource "libvirt_pool" "storage_pool" {
   name = var.cluster_id
   type = "dir"
-  path = "/var/lib/libvirt/openshift-images/${var.cluster_id}"
+  path = "/var/lib/libvirt/images/openshift-images/${var.cluster_id}"
 }
 
 resource "libvirt_volume" "coreos_base" {
@@ -36,7 +36,7 @@ resource "libvirt_network" "net" {
 
   domain = var.cluster_domain
 
-  addresses = var.machine_v4_cidrs
+  addresses = var.machine_v6_cidrs
 
   dns {
     local_only = true
